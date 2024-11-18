@@ -1,445 +1,160 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>AI Stef Newsletter</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #222;
-            color: white;
-            margin: 0;
-            padding: 0;
-           /*  overflow: hidden; Prevent scrolling */
-        }
-        #background-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-        }
-  .container {
-    width: 600px;
-    margin: auto;
-    background-color: rgba(51, 51, 51, 0.5); /* Dark grey with transparency */
-    margin-top: 20px;
-    margin-bottom: 50px;
-    z-index: 1;
-    position: relative;
-    border-radius: 10px; /* Rounded corners */
-    border: 1px solid rgba(255, 255, 255, 0.5); /* Light border for outline */
-    backdrop-filter: blur(10px); /* Frosted glass blur effect */
-    padding: 20px; /* Add some padding inside the container */
-}
-        .flex-container {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        .medium-image {
-            width: 300px;
-            height: auto;
-            margin-right: 10px;
-            transition: box-shadow 0.3s ease-in-out;
-        }
-        .medium-image:hover {
-            box-shadow: 0 0 0 4px white, 0 0 0 0px transparent;
-            border-radius: 4px;
-        }
-        .text-content {
-            flex: 1;
-            padding-left: 10px;
-        }
-        h1, h2 {
-            color: #FFF;
-            margin: 10px 0;
-        }
-        h1 {
-            margin: 20px 0 10px 0;
-            font-size: 42px;
-        }
-        p {
-            color: #CCC;
-            margin: 0;
-        }
-.rainbow-text {
-    background: linear-gradient(to right, violet, mediumblue, cyan, green, yellow, orange, red, violet, mediumblue, cyan, green);
-    -webkit-background-clip: text;
-    color: transparent;
-    display: inline-block;
-    background-size: 340% 100%; /* Ensure sufficient width for smooth movement */
-    animation: gradientMove 8s linear infinite; /* Duration matches gradient width for seamless looping */
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard UI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6e9ff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-@keyframes gradientMove {
-    0% {
-        background-position: 0% 50%; /* Start position */
+    .dashboard {
+      width: 375px;
+      background-color: #fff;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     }
-    100% {
-        background-position: 100% 50%; /* End position matches start for seamless loop */
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
     }
-}
-        hr {
-            border: none;
-            height: 1px;
-            background-image: linear-gradient(to right, #666 5px, transparent 5px);
-            background-size: 10px 1px;
-            margin: 20px 0;
-        }
-        .newsletter-intro {
-            background-color: #505050;
-            color: black;
-            padding: 10px;
-            text-align: left;
-            font-size: 14px;
-            margin: 0px 0 50px 0;
-        }
-    </style>
+
+    .header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .header .bell {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .project-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background-color: #f3f4f8;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      color: #333;
+      position: relative;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .card p {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .card:nth-child(1) {
+      background-color: #cfd4ff;
+    }
+
+    .card:nth-child(2) {
+      background-color: #ffd5f7;
+    }
+
+    .card:nth-child(3) {
+      background-color: #ffe8b2;
+    }
+
+    .card:nth-child(4) {
+      background-color: #c5ffc5;
+    }
+
+    .project-statistics {
+      margin-top: 20px;
+    }
+
+    .project-statistics h2 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .stats-bar {
+      width: 100%;
+      height: 150px;
+      background: url('bar-chart-placeholder.png') center center no-repeat;
+      background-size: contain;
+    }
+
+    .footer {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .footer div {
+      text-align: center;
+    }
+
+    .footer div span {
+      font-size: 20px;
+      font-weight: bold;
+      display: block;
+    }
+  </style>
 </head>
 <body>
-    <!-- Background Animation Container -->
-    <div id="background-animation"></div>
-
-    <div class="container">
-        <h1><span class="rainbow-text">Latest</span> AI Video Generators</h1>
-        <div class="newsletter-intro">
-            AI Video Generators Newsletter by Stéphane Vernet
-        </div>
-
-
-
-
-
-      <!-- Recraft AI - New Section -->
-      <h2>Recraft AI</h2>
-      <div class="flex-container">
-        <a href="https://www.recraft.ai" target="_blank">
-          <div className="relative w-[300px] h-[169px] overflow-hidden">
-            <img 
-              src="https://subscribed.fyi/wp-content/uploads/2024/02/Revolutionize-Visuals-with-Recraft_-AI-for-High-Quality-Images-in-Your-Style.jpg" alt="Recraft AI" class="medium-image"/>
-          </div>
-        </a>
-        <div class="text-content">
-          <p>
-            Recraft AI est une plateforme innovante qui combine la génération de vidéos et d'animations avec des capacités d'édition avancées. Elle se distingue par sa capacité à transformer des concepts créatifs en contenu vidéo dynamique, offrant des outils de personnalisation poussés pour les styles visuels et les transitions. La plateforme propose également des fonctionnalités de collaboration en temps réel, idéales pour les équipes créatives travaillant sur des projets vidéo complexes.
-          </p>
-        </div>
+  <div class="dashboard">
+    <div class="header">
+      <h1>Dashboard</h1>
+      <span class="bell">🔔</span>
+    </div>
+    <div class="project-summary">
+      <div class="card">
+        <h2>24</h2>
+        <p>In Progress</p>
       </div>
-      <hr />
-
-
-
-        <!-- Runway ML Section -->
-        <h2>Runway ML</h2>
-        <div class="flex-container">
-            <a href="https://runwayml.com/" target="_blank">
-                <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0dd094c9-c4d5-47ce-8a54-1b35e7e755b0_600x360.gif" alt="Runway ML" class="medium-image">
-            </a>
-            <div class="text-content">
-                <p>Runway ML est une plateforme populaire pour la création de contenu multimédia assistée par l'IA. Elle propose des outils de génération vidéo, y compris des fonctionnalités de transformation d’images en vidéos, de fond vert virtuel et d’effets spéciaux. Elle offre un essai gratuit avec des options de paiement pour des fonctionnalités supplémentaires.</p>
-            </div>
-        </div>
-        <hr>
-
-        <!-- Haiper -->
-        <h2>Haiper</h2>
-        <div class="flex-container">
-            <a href="https://haiper.ai/home" target="_blank">
-               
-            
-                    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
-            <source src="https://framerusercontent.com/assets/RxROEZ7T4ade2L7I5u6s9f4qc.mp4" type="video/webm">
-            Your browser does not support the video tag.
-        </video>
-</a>
-        </div>
-        <hr>
-
-
-
-<h2>Luma Dream Machine</h2>
-<div class="flex-container">
-<a href="https://lumalabs.ai/dream-machine" target="_blank">
-    <div style="position: relative; width: 300px; height: 169px; overflow: hidden;">
-
-        <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
-            <source src="https://cdn-luma.com/public/lumalabs.ai/june-12-launch-dream-machine-high-res/assets/dream-machine/featured/videos/2.webm" type="video/webm">
-            Your browser does not support the video tag.
-        </video>
-
+      <div class="card">
+        <h2>56</h2>
+        <p>In Review</p>
+      </div>
+      <div class="card">
+        <h2>16</h2>
+        <p>On Hold</p>
+      </div>
+      <div class="card">
+        <h2>45</h2>
+        <p>Completed</p>
+      </div>
     </div>
-</a>
-    <div class="text-content">
-        <p>Luma Dream Machine utilise l'IA pour générer des images oniriques et surréalistes à partir de descriptions textuelles. Parfait pour les artistes et créateurs qui cherchent à explorer des styles visuels imaginatifs et surréalistes.</p>
+    <div class="project-statistics">
+      <h2>Project Statistics</h2>
+      <div class="stats-bar"></div>
     </div>
-</div>
-<hr>
-
-
-
-
-
-
-
-        <!-- Kling -->
-        <h2>Kling</h2>
-        <div class="flex-container">
-            <a href="#" target="_blank"> <!-- Replace # with the actual link if available -->
-                <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8249aea8-d589-49c8-bb80-443cb67d4d9a_600x338.gif" alt="Kling" class="medium-image">
-            </a>
-            <div class="text-content">
-                <p>Access: Search for Kling on Hugging Face Spaces, or check its website if available.<br>
-                Description: Kling is an AI art generator that focuses on creating stylized images. It offers a variety of style presets, and you can customize the output based on different art influences, making it a favorite for creating unique and vivid digital art pieces.</p>
-            </div>
-        </div>
-        <hr>
-
-        <!-- Minimax (Hailuo AI) -->
-        <h2>Minimax (Hailuo AI)</h2>
-        <div class="flex-container">
-            <a href="https://hailuoai.com/" target="_blank">
-                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5e1a497a-6b21-4e04-892a-06cc3fc58a7c/di88ilm-11cc8a78-0f07-4c89-8eaf-69ed9e64fa8b.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVlMWE0OTdhLTZiMjEtNGUwNC04OTJhLTA2Y2MzZmM1OGE3Y1wvZGk4OGlsbS0xMWNjOGE3OC0wZjA3LTRjODktOGVhZi02OWVkOWU2NGZhOGIuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.k0SJbYUcgnAKEPd0JBw4b1976XhXC5P4zVjc65MiWYk" alt="Minimax" class="medium-image">
-            </a>
-           <div class="text-content">
-                <p>Access: Visit the official website at https://hailuoai.com/.<br>
-                Description: Hailuo AI offers various tools, including Minimax, for generating images and artwork based on text prompts. The platform focuses on providing high-quality output that can be used in professional settings, such as graphic design and digital illustration.</p>
-            </div>
-        </div>
-        <hr>
-
-        <!-- Hedra -->
-        <h2>Hedra</h2>
-        <div class="flex-container">
-            <a href="#" target="_blank"> <!-- Replace # with the actual link if available -->
-                <img src="https://cdn.mos.cms.futurecdn.net/F5F5oeYZvSfESXnvwq2jrn.gif" alt="Hedra" class="medium-image">
-            </a>
-            <div class="text-content">
-                <p>Access: Search for Hedra on Hugging Face Spaces or explore its official site if available.<br>
-                Description: Hedra is an AI tool known for creating geometric and abstract art. By using Hedra, you can generate intricate patterns and shapes, perfect for those interested in exploring abstract visualizations.</p>
-            </div>
-        </div>
-        <hr>
-
-
-
-        <!-- HeyGen -->
-        <h2>HeyGen</h2>
-        <div class="flex-container">
-            <a href="https://www.heygen.com/" target="_blank">
-                <img src="https://static.heygen.ai/prod/movio/public/resource/9df58d5306ea479a9fc1dd1b6961e836.gif" alt="HeyGen" class="medium-image">
-            </a>
-            <div class="text-content">
-                <p>Access: https://www.heygen.com/<br>
-                Description: HeyGen allows you to create videos with customizable avatars that can be tailored to convey specific messages. The platform offers multiple avatar styles and supports text-to-speech in various languages, making it ideal for marketing, training, or explainer videos. HeyGen provides a free trial, with more advanced features available through paid plans.</p>
-            </div>
-        </div>
-        <hr>
-
-        <!-- Pika Labs, Synthesia, and other existing sections below... -->
-
-        <!-- Pika Labs -->
-        <h2>Pika Labs</h2>
-        <div class="flex-container">
-            <a href="https://www.pikalabs.com/" target="_blank">
-                <img src="https://cdn.mos.cms.futurecdn.net/XaNHegfrokErcw6ssYs5Yn-320-80.gif" alt="Pika Labs" class="medium-image">
-            </a>
-            <div class="text-content">
-                <p>Pika Labs propose des outils simples et efficaces pour générer des vidéos à partir de texte. Sa version gratuite permet de créer des clips courts, avec des options premium pour des vidéos de meilleure qualité et de plus longue durée.</p>
-            </div>
-        </div>
-        <hr>
-
-        <!-- Continue with Synthesia, DeepBrain, Lumen5, Pictory, etc... -->
-
-
-
-        <!-- Based Labs AI -->
-        <h2>Based Labs AI</h2>
-        <div class="flex-container">
-            <a href="https://www.basedlabs.ai/" target="_blank">
-                <img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*kewl-MI58uEPS7DLPdoG2Q.gif" alt="Based Labs AI" class="medium-image">
-            </a>
-            <div class="text-content">
-                <p>Based Labs AI est un modèle d'IA générative qui permet de créer des images à partir de descriptions textuelles. Il est conçu pour générer des œuvres artistiques en fonction des paramètres et des styles définis par l'utilisateur. Vous pouvez expérimenter avec une grande variété de styles et de thématiques, en ajustant les paramètres pour obtenir des résultats artistiques uniques.</p>
-            </div>
-        </div>
-<hr>
-
-        <!-- Synthesia -->
-        <h2>Synthesia</h2>
-        <div class="flex-container">
-            <a href="https://www.synthesia.io/" target="_blank">
-                <img src="https://api.synthesia.io/dc9b20e5-a727-4c5f-86be-e38c11272e2d/thumbnail.gif" alt="Synthesia" class="medium-image">
-            </a>
-            <div class="text-content">
-                <p>Synthesia est spécialisé dans la création de vidéos avec des avatars humains générés par IA. Très utilisé pour le contenu éducatif ou les vidéos de présentation, Synthesia propose un essai gratuit limité et des abonnements pour un usage étendu.</p>
-            </div>
-        </div>
-        <hr>
-
-        <!-- DeepBrain -->
-        <h2>DeepBrain</h2>
-        <div class="flex-container">
-            <a href="https://deepbrain.io/" target="_blank">
-                <img src="https://structural-reform.com/wp-content/uploads/2024/02/deepbrain.gif" alt="DeepBrain" class="medium-image">
-            </a>
-            <div class="text-content">
-                <p>DeepBrain permet de créer des vidéos IA en utilisant des avatars animés et en générant des dialogues à partir de texte. Avec une interface intuitive et une version freemium, il est adapté pour les contenus de formation ou de marketing qui nécessitent des présentations en format vidéo.</p>
-            </div>
-        </div>
-        <hr>
-
-        <!-- Lumen5 -->
-        <h2>Lumen5</h2>
-        <div class="flex-container">
-            <a href="https://www.lumen5.com/" target="_blank">
-                <img src="https://techwisetools.com/wp-content/uploads/2023/09/invideo-VS-Lumen5.png" alt="Lumen5" class="medium-image">
-            </a>
-            <div class="text-content">
-                <p>Lumen5 transforme automatiquement du texte en vidéo, idéal pour créer des vidéos à partir d’articles ou de scripts. Sa version gratuite permet de produire rapidement des vidéos engageantes avec une interface glisser-déposer.</p>
-            </div>
-        </div>
-        <hr>
-
-        <!-- Pictory -->
-        <h2>Pictory</h2>
-        <div class="flex-container">
-            <a href="https://pictory.ai/" target="_blank">
-                <img src="https://pictory.ai/wp-content/uploads/2023/08/Preview.gif" alt="Pictory" class="medium-image">
-            </a>
-            <div class="text-content">
-                <p>Pictory utilise l'IA pour convertir des articles ou des scripts en vidéos. Avec des outils de montage faciles à utiliser et une bibliothèque de vidéos et d’images de stock, Pictory est accessible en mode freemium.</p>
-            </div>
-        </div>
-        <hr>
-
-        <!-- Elai.io -->
-        <h2>Elai.io</h2>
-        <div class="flex-container">
-            <a href="https://elai.io/" target="_blank">
-                <img src="https://dragganaitool.com/wp-content/uploads/2023/08/Elai.io-AI.png" alt="Elai.io" class="medium-image">
-            </a>
-            <div class="text-content">
-                <p>Elai.io permet de générer des vidéos personnalisées avec des avatars IA en utilisant uniquement du texte. Particulièrement utile pour les vidéos explicatives ou promotionnelles, Elai propose un modèle freemium pour explorer les fonctionnalités de base.</p>
-            </div>
-        </div>
-        <hr>
-
-        <!-- Kaiber -->
-        <h2>Kaiber</h2>
-        <div class="flex-container">
-            <a href="https://www.kaiber.ai/" target="_blank">
-                <img src="https://www.tutkit.com/storage/media/text-tutorials/2094/kreative-videoerstellung-mit-kaiberai-so-erweckst-du-deine-bilder-zum-leben-120.webp?tutkfid=219051" alt="Kaiber" class="medium-image">
-            </a>
-            <div class="text-content">
-                <p>Kaiber est une IA créative qui génère des vidéos en transformant des images en animation vidéo. Les utilisateurs peuvent ajouter des effets de mouvement et des transitions pour créer des visuels dynamiques.</p>
-            </div>
-        </div>
-        <hr>
-
-        <!-- DeepMotion -->
-        <h2>DeepMotion</h2>
-        <div class="flex-container">
-            <a href="https://www.deepmotion.com/" target="_blank">
-                <img src="https://3dnchu.b-cdn.net/wp-content/uploads/2020/12/Animate-3D-v2.1.gif" alt="DeepMotion" class="medium-image">
-            </a>
-            <div class="text-content">
-                <p>DeepMotion est spécialisé dans la capture de mouvement IA, ce qui permet de créer des vidéos avec des avatars animés à partir de mouvements humains. Idéal pour produire des vidéos en utilisant la capture de mouvement sans équipement coûteux.</p>
-            </div>
-        </div>
-        <hr>
-
-        <!-- Veed.io -->
-        <h2>Veed.io</h2>
-        <div class="flex-container">
-            <a href="https://www.veed.io/ai" target="_blank">
-                <img src="https://bforbloggers.com/wp-content/uploads/2022/05/Veed.io-review.png" alt="Veed.io" class="medium-image">
-            </a>
-            <div class="text-content">
-                <p>Veed.io propose des outils de montage vidéo avec des fonctionnalités IA comme la génération de sous-titres automatiques et la transformation de texte en vidéo. La version gratuite offre des fonctionnalités de base avec un filigrane.</p>
-            </div>
-        </div>
-
-
-
-
+    <div class="footer">
+      <div>
+        <span>50:25:06</span>
+        <p>Total Working Hours</p>
+      </div>
+      <div>
+        <span>125</span>
+        <p>Total Task Activity</p>
+      </div>
     </div>
- <!-- Three.js and Animation Script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <script>
-        var camera, scene, renderer, particles, control;
-        const assetPath = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/2666677/';
-
-        init();
-
-        function init() {
-            clock = new THREE.Clock();
-
-            renderer = new THREE.WebGLRenderer({ alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.getElementById('background-animation').appendChild(renderer.domElement);
-
-            scene = new THREE.Scene();
-
-            camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 100);
-            camera.position.z = 4;
-            scene.add(camera);
-
-            light = new THREE.DirectionalLight(0xffffff, 1.0);
-            light.position.set(-1, 0, 1);
-            scene.add(light);
-
-            control = new THREE.OrbitControls(camera, renderer.domElement);
-
-            const tex = new THREE.TextureLoader()
-                .setPath(assetPath)
-                .load('smoke_01.png');
-            const material = new THREE.MeshLambertMaterial({
-                color: 0xffffff,
-                depthWrite: false,
-                map: tex,
-                transparent: true
-            });
-            const geometry = new THREE.PlaneGeometry(5, 5);
-            particles = [];
-
-            const size = 5;
-
-            for (let i = 0; i < 40; i++) {
-                const particle = new THREE.Mesh(geometry, material);
-                particle.position.set(
-                    (Math.random() - 0.5) * size,
-                    (Math.random() - 0.5) * size,
-                    (Math.random() - 0.5) * size
-                );
-                particle.rotation.z = Math.random() * Math.PI * 2;
-                scene.add(particle);
-                particles.push(particle);
-            }
-
-            renderer.setAnimationLoop(update);
-        }
-
-        function update() {
-            const dt = clock.getDelta();
-            if (particles) {
-                particles.forEach(particle => {
-                    const z = particle.rotation.z;
-                    particle.lookAt(camera.position);
-                    particle.rotation.z = z + dt * 0.1;
-                });
-            }
-            renderer.render(scene, camera);
-        }
-
-        window.addEventListener('resize', function () {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
+  </div>
 </body>
 </html>
